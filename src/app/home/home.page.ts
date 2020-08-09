@@ -89,6 +89,18 @@ export class HomePage implements OnInit {
       this.thambolaTicket = data.ticket;
       console.log(data);
     });
+
+    this.socket.fromEvent('adminInfo-user-ticket-number-click').subscribe((userData: any) => {
+      console.log('Admin: User changed a ticket: ', userData);
+    });
+  }
+
+  onTicketNumberClick(selectedNumbers: number[]) {
+    this.socket.emit('user-ticket-number-click', {
+      username: this.currentUser,
+      selectedNumbers,
+      ticket: this.thambolaTicket
+    });
   }
 
   ngOnInit() {

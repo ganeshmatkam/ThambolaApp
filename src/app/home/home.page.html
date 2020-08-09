@@ -7,7 +7,7 @@
 </ion-header>
 
 <ion-content>
-  <app-thambola-card *ngIf="thambolaTicket" [ticket]="thambolaTicket" ></app-thambola-card>
+  <app-thambola-card *ngIf="thambolaTicket" (ticketNumberClick)="onTicketNumberClick($event)" [ticket]="thambolaTicket" ></app-thambola-card>
   <ion-grid>
     <ion-text color="medium" text-center>
       <p>You joined the as {{ currentUser }}</p>

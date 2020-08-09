@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-thambola-card',
@@ -9,6 +9,9 @@ export class ThambolaCardComponent implements OnInit {
 
   @Input()
   ticket: number[][];
+
+  @Output()
+  ticketNumberClick: EventEmitter<any> = new EventEmitter();
 
   selectedNumbers: number[] = [];
 
@@ -23,6 +26,7 @@ export class ThambolaCardComponent implements OnInit {
         this.selectedNumbers.push(num);
       }
     }
+    this.ticketNumberClick.emit(this.selectedNumbers);
   }
 
   ngOnInit() { }
