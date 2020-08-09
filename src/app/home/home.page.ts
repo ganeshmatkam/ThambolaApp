@@ -15,7 +15,8 @@ export class HomePage implements OnInit {
   currentUser = '';
   thambolaTicket: number[][];
 
-  allUsers: {user: string; createdAt: number; ticket: number[][]; choosenNumbers: number[]}[] = [];
+  allUsers: { user: string; createdAt: number; ticket: number[][]; choosenNumbers: number[] }[] = [];
+  allUserIds: string[] = [];
 
   userContext: UserContext;
 
@@ -94,7 +95,14 @@ export class HomePage implements OnInit {
 
     this.socket.fromEvent('adminInfo-user-ticket-number-click').subscribe((userData: any) => {
       console.log('Admin: User changed a ticket: ', userData);
-      this.allUsers.push(userData);
+      const userIx = this.allUserIds.indexOf(userData.user);
+      if (userIx !== -1) {
+        this.allUsers[userIx].createdAt = userData.createdAt;
+        this.allUsers[userIx].choosenNumbers = userData.choosenNumbers;
+      } else {
+        this.allUsers.push(userData);
+        this.allUserIds.push(userData.user);
+      }
     });
   }
 
