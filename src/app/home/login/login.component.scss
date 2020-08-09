@@ -42,13 +42,13 @@
     background-image: url('/assets/images/login-bg.jpg');
   
     /* Add the blur effect */
-    filter: blur(8px);
+    filter: blur(4px);
   
     /* Full height */
     height: 100%;
   
     /* Center and scale the image nicely */
-    background-position: center;
+    background-position: top;
     background-repeat: no-repeat;
     background-size: cover;
   }

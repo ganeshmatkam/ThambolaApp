@@ -3,6 +3,7 @@ import { DataService, Message } from '../services/data.service';
 import { ToastController } from '@ionic/angular';
 import { Socket, SocketIoConfig } from 'ngx-socket-io';
 import { UserContextService, UserContext } from './services/user-context.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -24,12 +25,15 @@ export class HomePage implements OnInit {
     url: '',
     options: {},
   };
+  newNumber: number;
+  audio: any;
 
   constructor(
     private socket: Socket,
     private toastCtrl: ToastController,
     private data: DataService,
-    private userContextSvc: UserContextService
+    private userContextSvc: UserContextService,
+    private router: Router
   ) {
 
   }
@@ -104,7 +108,23 @@ export class HomePage implements OnInit {
         this.allUserIds.push(userData.user);
       }
     });
+
+    this.socket.fromEvent('new-picked-number').subscribe((newNumber: any) => {
+      this.playAudio();
+      this.newNumber = +newNumber;
+    });
   }
+
+  loadAudio() {
+    this.audio = new Audio();
+    this.audio.src = '/assets/sounds/notification.mp3';
+    this.audio.load();
+  }
+
+  playAudio(){
+    this.audio.play();
+  }
+
 
   onTicketNumberClick(selectedNumbers: number[]) {
     this.socket.emit('user-ticket-number-click', {
@@ -120,9 +140,10 @@ export class HomePage implements OnInit {
     if (this.userContext) {
       this.currentUser = this.userContext.username;
     } else {
-      this.currentUser = 'Test Admin';
+      this.router.navigateByUrl('/home/login');
     }
     this.initSocket();
     this.subscribeSocketEvents();
+    this.loadAudio();
   }
 }

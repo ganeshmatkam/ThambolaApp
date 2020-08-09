@@ -3,6 +3,10 @@
     <ion-title>
       Prathyusha Family Thambola
     </ion-title>
+    <ion-buttons slot="end" *ngIf="newNumber">
+      New Number <span style="font-size: 40px;margin: 16px;">{{newNumber}}</span>
+  
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -10,7 +14,7 @@
   <app-thambola-card *ngIf="thambolaTicket" (ticketNumberClick)="onTicketNumberClick($event)" [ticket]="thambolaTicket" ></app-thambola-card>
   <ion-grid>
     <ion-text color="medium" text-center>
-      <p>You joined the as {{ currentUser }}</p>
+      <p>You joined as {{ currentUser }}</p>
     </ion-text>
     <ion-row *ngFor="let message of messages">
  
