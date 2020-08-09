@@ -1,11 +1,11 @@
 .t-card {
     margin: 20px;
-    border: 2px solid black;
-    box-shadow: 0 4px 10px 0 rgba(0,0,0,0.2), 0 4px 20px 0 rgba(0,0,0,0.19);
+    // border: 1px solid #383a3e;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 15px rgba(0,0,0,0.52);
 
     ion-row {
         &:not(:first-child) {
-            border-top: 2px solid black;
+            border-top: 1px solid #383a3e;
         }
     }
 
@@ -20,7 +20,12 @@
         background-color: #FFD700;
 
         &:not(:last-child) {
-            border-right: 2px solid black;
+            border-right: 1px solid #383a3e;
+        }
+
+        &.active {
+            background-color: var(--ion-color-primary);
+            color: #fff;
         }
     }
 }

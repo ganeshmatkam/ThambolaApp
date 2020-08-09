@@ -1,7 +1,7 @@
 <ion-header >
   <ion-toolbar color="primary">
     <ion-title>
-      Inbox
+      Prathyusha Family Thambola
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -10,7 +10,7 @@
   <app-thambola-card *ngIf="thambolaTicket" [ticket]="thambolaTicket" ></app-thambola-card>
   <ion-grid>
     <ion-text color="medium" text-center>
-      <p>You joined the chat as {{ currentUser }}</p>
+      <p>You joined the as {{ currentUser }}</p>
     </ion-text>
     <ion-row *ngFor="let message of messages">
  
@@ -31,7 +31,7 @@
  
 </ion-content>
  
-<ion-footer>
+<!-- <ion-footer>
   <ion-toolbar color="light">
     <ion-row align-items-center>
       <ion-col size="10">
@@ -45,7 +45,7 @@
       </ion-col>
     </ion-row>
   </ion-toolbar>
-</ion-footer>
+</ion-footer> -->
 
 <!-- <ion-content [fullscreen]="true">
   <ion-refresher slot="fixed" (ionRefresh)="refresh($event)">
