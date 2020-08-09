@@ -1,0 +1,26 @@
+.t-card {
+    margin: 20px;
+    border: 2px solid black;
+    box-shadow: 0 4px 10px 0 rgba(0,0,0,0.2), 0 4px 20px 0 rgba(0,0,0,0.19);
+
+    ion-row {
+        &:not(:first-child) {
+            border-top: 2px solid black;
+        }
+    }
+
+    ion-col {
+        font-size: 26px;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        height: 60px;
+        width: 60px;
+        min-width: 30px;
+        background-color: #FFD700;
+
+        &:not(:last-child) {
+            border-right: 2px solid black;
+        }
+    }
+}

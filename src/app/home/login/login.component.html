@@ -1,0 +1,18 @@
+<ion-content [fullscreen]="true">
+  <div class="bg-image"></div>
+  <div class="login-container">
+    <ion-list>
+      <ion-item>
+        <ion-label position="stacked">Game Address</ion-label>
+        <ion-input [(ngModel)]="gameAddress"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Name</ion-label>
+        <ion-input clearInput [(ngModel)]="username" placeholder="Enter your name here.."></ion-input>
+      </ion-item>
+    </ion-list>
+
+    <ion-button [disabled]="!gameAddress || !username" class="login-button" color="primary" expand="block" (click)="login()">Start Game</ion-button>
+  </div>
+</ion-content>

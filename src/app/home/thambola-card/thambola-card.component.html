@@ -1,0 +1,7 @@
+<div class="t-card">
+  <ion-row *ngFor="let row of ticket">
+    <ion-col *ngFor="let col of row">
+      {{ col || '&nbsp;' }}
+    </ion-col>
+  </ion-row>
+</div>
