@@ -73,7 +73,9 @@ export class HomePage implements OnInit {
       this.socket = new Socket(this.config);
       this.socket.connect();
     }
-    this.socket.emit('set-name', this.currentUser);
+    if (this.currentUser) {
+      this.socket.emit('set-name', this.currentUser);
+    }
   }
 
   subscribeSocketEvents() {
@@ -139,11 +141,11 @@ export class HomePage implements OnInit {
     console.log('usercontext: ', this.userContextSvc.getUserContext());
     if (this.userContext) {
       this.currentUser = this.userContext.username;
+      this.initSocket();
+      this.subscribeSocketEvents();
+      this.loadAudio();
     } else {
       this.router.navigateByUrl('/home/login');
     }
-    this.initSocket();
-    this.subscribeSocketEvents();
-    this.loadAudio();
   }
 }
