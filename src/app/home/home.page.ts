@@ -15,6 +15,8 @@ export class HomePage implements OnInit {
   currentUser = '';
   thambolaTicket: number[][];
 
+  allUsers: {user: string; createdAt: number; ticket: number[][]; choosenNumbers: number[]}[] = [];
+
   userContext: UserContext;
 
   config: SocketIoConfig = {
@@ -92,6 +94,7 @@ export class HomePage implements OnInit {
 
     this.socket.fromEvent('adminInfo-user-ticket-number-click').subscribe((userData: any) => {
       console.log('Admin: User changed a ticket: ', userData);
+      this.allUsers.push(userData);
     });
   }
 

@@ -1,0 +1,4 @@
+<div class="user-card" *ngFor="let user of users">
+  <label>User: {{user.user}}</label>
+  <app-thambola-card [ticket]="user.ticket" [selectedNumbers]="user.choosenNumbers" [readOnly]="true"></app-thambola-card>
+</div>

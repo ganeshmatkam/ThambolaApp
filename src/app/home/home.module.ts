@@ -8,6 +8,7 @@ import { HomePageRoutingModule } from './home-routing.module';
 import { MessageComponentModule } from '../message/message.module';
 import { LoginComponent } from './login/login.component';
 import { ThambolaCardComponent } from './thambola-card/thambola-card.component';
+import { UsersComponent } from './users/users.component';
 
 @NgModule({
   imports: [
@@ -17,6 +18,6 @@ import { ThambolaCardComponent } from './thambola-card/thambola-card.component';
     MessageComponentModule,
     HomePageRoutingModule
   ],
-  declarations: [HomePage, LoginComponent, ThambolaCardComponent]
+  declarations: [HomePage, LoginComponent, ThambolaCardComponent, UsersComponent]
 })
 export class HomePageModule {}

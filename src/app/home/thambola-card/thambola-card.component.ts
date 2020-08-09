@@ -13,20 +13,24 @@ export class ThambolaCardComponent implements OnInit {
   @Output()
   ticketNumberClick: EventEmitter<any> = new EventEmitter();
 
+  @Input()
   selectedNumbers: number[] = [];
+
+  @Input()
+  readOnly = false;
 
   constructor() { }
 
   onNumberClick(num: number, rowIndex: number, colIndex: number) {
-    if (num) {
+    if (num && !this.readOnly) {
       const numIndex = this.selectedNumbers.indexOf(num);
       if (numIndex !== -1) {
         this.selectedNumbers.splice(numIndex, 1);
       } else {
         this.selectedNumbers.push(num);
       }
+      this.ticketNumberClick.emit(this.selectedNumbers);
     }
-    this.ticketNumberClick.emit(this.selectedNumbers);
   }
 
   ngOnInit() { }

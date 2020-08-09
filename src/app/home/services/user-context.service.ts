@@ -13,7 +13,7 @@ export class UserContextService {
   constructor() { }
 
   setUserContext(username: string, gameAddress: string) {
-    this.userContext = new UserContext({username, gameAddress});
+    this.userContext = new UserContext({username, gameAddress} as any);
   }
 
   getUserContext(): UserContext {
@@ -29,6 +29,12 @@ export class UserContext {
     if (data) {
       this.username = data.username;
       this.gameAddress = data.gameAddress;
+    }
+  }
+
+  isAdmin(): boolean {
+    if (this.username && this.username.indexOf('admin1563')) {
+      return true;
     }
   }
 }
